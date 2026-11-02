@@ -1,198 +1,194 @@
-import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
-import { useRef } from "react";
 
-function Projects() {
+import React, { useRef } from "react";
+import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
+
+const Projects = () => {
   const scrollRef = useRef(null);
+  const baseUrl = import.meta.env.BASE_URL;
 
   const projects = [
     {
       title: "AV Forensics",
-      image: "/images/av-forensics.png",
       description:
-        "An audio and video forensics project focused on digital media analysis and examining multimedia content.",
-      technologies: ["Python", "Digital Forensics"],
+        "A project focused on audio and video forensics, exploring techniques for analyzing and examining digital multimedia content.",
+      image: `${baseUrl}images/av-forensics.png`,
+      technologies: ["Python", "Machine Learning", "Digital Forensics"],
       github: "https://github.com/kuladeepb",
     },
     {
       title: "Plant Pulse",
-      image: "/images/plant-pulse.png",
       description:
-        "A plant monitoring and management application designed to help users manage plant care and track plant-related information.",
+        "A plant monitoring project designed to explore smart technology solutions for plant care and monitoring.",
+      image: `${baseUrl}images/plant-pulse.png`,
       technologies: ["React", "JavaScript", "CSS"],
       github: "https://github.com/kuladeepb",
     },
     {
       title: "Expense Tracker",
-      image: "/images/expense-tracker.png",
       description:
-        "A personal finance application that helps users record expenses, track spending and manage their budgets.",
+        "A web application designed to help users manage expenses, monitor spending, and maintain better financial records.",
+      image: `${baseUrl}images/expense-tracker.png`,
       technologies: ["React", "JavaScript", "CSS"],
       github: "https://github.com/kuladeepb",
     },
     {
       title: "Developer Portfolio",
-      image: "/images/portfolio.png",
       description:
-        "A personal developer portfolio showcasing my technical skills, projects and development journey.",
+        "A personal developer portfolio showcasing my technical skills, projects, and development journey with a responsive interface.",
+      image: `${baseUrl}images/portfolio.png`,
       technologies: ["React", "Tailwind CSS", "JavaScript"],
-      github: "https://github.com/kuladeepb",
+      github: "https://github.com/kuladeepb/My-portfolio",
+      live: "https://kuladeep-portfolio-ten.vercel.app/",
     },
   ];
 
   const scroll = (direction) => {
     if (scrollRef.current) {
+      const amount = 370;
+
       scrollRef.current.scrollBy({
-        left: direction === "left" ? -350 : 350,
+        left: direction === "left" ? -amount : amount,
         behavior: "smooth",
       });
     }
   };
 
   return (
-    <section
-      id="projects"
-      className="w-full overflow-hidden bg-[#F8FAFC] px-5 py-16 sm:px-6 sm:py-20 md:px-10 lg:px-16"
-    >
-      <div className="mx-auto max-w-7xl">
+    <section id="projects" className="bg-white py-20 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
 
         {/* SECTION HEADING */}
-        <div className="mb-8 flex flex-col gap-5 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
+        <div className="text-center mb-12">
+          <p className="text-blue-600 font-semibold tracking-widest text-sm mb-3">
+            MY WORK
+          </p>
 
-          <div>
-            <p className="mb-3 text-sm font-semibold tracking-wider text-blue-600">
-              MY PROJECTS
-            </p>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
+            Featured Projects
+          </h2>
 
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-              Featured Projects
-            </h2>
-
-            <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">
-              Some of the projects I've built or am currently working on.
-            </p>
-          </div>
-
-          {/* SCROLL BUTTONS */}
-          <div className="flex items-center gap-3">
-
-            <button
-              onClick={() => scroll("left")}
-              aria-label="Scroll projects left"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-white text-gray-700 transition hover:border-blue-500 hover:text-blue-600"
-            >
-              <ChevronLeft size={20} />
-            </button>
-
-            <button
-              onClick={() => scroll("right")}
-              aria-label="Scroll projects right"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-white text-gray-700 transition hover:border-blue-500 hover:text-blue-600"
-            >
-              <ChevronRight size={20} />
-            </button>
-
-          </div>
+          <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
+            Here are some of the projects I've worked on, showcasing my
+            development skills and passion for building applications.
+          </p>
         </div>
 
-        {/* HORIZONTAL PROJECT CARDS */}
+        {/* SCROLL BUTTONS */}
+        <div className="flex justify-end gap-3 mb-6">
+          <button
+            onClick={() => scroll("left")}
+            aria-label="Scroll projects left"
+            className="p-3 rounded-full border border-gray-300 text-gray-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition duration-300"
+          >
+            <ChevronLeft size={22} />
+          </button>
+
+          <button
+            onClick={() => scroll("right")}
+            aria-label="Scroll projects right"
+            className="p-3 rounded-full border border-gray-300 text-gray-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition duration-300"
+          >
+            <ChevronRight size={22} />
+          </button>
+        </div>
+
+        {/* PROJECT CARDS */}
         <div
           ref={scrollRef}
-          className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-5 sm:gap-6"
-          style={{
-            scrollbarWidth: "thin",
-            WebkitOverflowScrolling: "touch",
-          }}
+          className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6"
+          style={{ scrollbarWidth: "none" }}
         >
-
-          {projects.map((project) => (
-
+          {projects.map((project, index) => (
             <div
-              key={project.title}
-              className="w-[85vw] max-w-[340px] flex-none snap-center overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:w-[340px] sm:snap-start"
+              key={index}
+              className="min-w-[85vw] max-w-[340px] sm:min-w-[340px] bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 snap-center"
             >
-
               {/* PROJECT IMAGE */}
-              <div className="h-44 w-full overflow-hidden bg-slate-200 sm:h-48">
-
+              <div className="h-52 overflow-hidden bg-gray-200">
                 <img
                   src={project.image}
-                  alt={`${project.title} project preview`}
+                  alt={project.title}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    console.error(
+                      `Failed to load project image: ${project.image}`
+                    );
+                  }}
                 />
-
               </div>
 
-              {/* PROJECT DETAILS */}
-              <div className="flex min-h-[250px] flex-col p-5">
+              {/* PROJECT CONTENT */}
+              <div className="p-6">
 
-                <h3 className="mb-2 text-lg font-bold text-gray-900">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
                   {project.title}
                 </h3>
 
-                <p className="mb-5 min-h-[72px] text-sm leading-6 text-slate-600">
+                <p className="text-gray-600 text-sm leading-6 mb-5">
                   {project.description}
                 </p>
 
-                {/* TECHNOLOGY TAGS */}
-                <div className="flex flex-wrap gap-2">
-
-                  {project.technologies.map((tech) => (
-
+                {/* TECHNOLOGIES */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.technologies.map((tech, techIndex) => (
                     <span
-                      key={tech}
-                      className="rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-slate-700"
+                      key={techIndex}
+                      className="text-xs font-medium px-3 py-1 rounded-full bg-blue-100 text-blue-700"
                     >
                       {tech}
                     </span>
-
                   ))}
-
                 </div>
 
-                {/* GITHUB LINK */}
-                <div className="mt-auto flex justify-end pt-5">
+                {/* PROJECT LINKS */}
+                <div className="flex items-center gap-4">
 
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`View ${project.title} on GitHub`}
-                    className="text-gray-800 transition hover:text-blue-600"
+                    className="flex items-center gap-2 text-gray-800 hover:text-blue-600 font-semibold text-sm transition"
                   >
-                    <FaGithub size={21} />
+                    <Github size={18} />
+                    GitHub
                   </a>
 
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-semibold text-sm transition"
+                    >
+                      <ExternalLink size={17} />
+                      Live Demo
+                    </a>
+                  )}
+
                 </div>
-
               </div>
-
             </div>
-
           ))}
-
         </div>
 
-        {/* MORE PROJECTS */}
-        <div className="mt-8 flex justify-center">
-
+        {/* EXPLORE MORE */}
+        <div className="text-center mt-10">
           <a
             href="https://github.com/kuladeepb"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 rounded-full border border-blue-600 px-5 py-3 text-sm font-semibold text-blue-600 transition hover:bg-blue-600 hover:text-white sm:gap-3 sm:px-7 sm:text-base"
+            className="inline-flex items-center gap-2 bg-[#0B1120] text-white px-7 py-3 rounded-full hover:bg-blue-600 transition duration-300 font-semibold"
           >
-            <FaGithub size={19} />
+            <Github size={19} />
             Explore More on GitHub
             <ExternalLink size={16} />
           </a>
-
         </div>
 
       </div>
     </section>
   );
-}
+};
 
 export default Projects;
