@@ -1,88 +1,123 @@
-import React from "react";
 import { Send, Mail } from "lucide-react";
 
-const Hero = () => {
-  const baseUrl = import.meta.env.BASE_URL;
-
+function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen bg-[#0B1120] text-white flex items-center overflow-hidden"
+      className="min-h-screen w-full overflow-hidden bg-[#0B1120] text-white"
     >
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-10 py-20">
+      <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center gap-12 px-6 py-16 md:flex-row md:justify-between md:gap-8 md:px-12 md:py-12 lg:gap-12 lg:px-16">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+        {/* LEFT SIDE */}
+        <div className="w-full max-w-[560px] text-center md:text-left">
 
-          {/* LEFT CONTENT */}
-          <div className="text-center md:text-left">
+          <p className="font-sans text-xl text-gray-300 md:text-2xl">
+            Hi, I'm
+          </p>
 
-            <p className="text-gray-300 text-xl md:text-2xl mb-3">
-              Hi, I'm
-            </p>
+          <h1 className="mt-1 text-5xl font-bold sm:text-6xl lg:text-7xl">
+            Kula<span className="text-blue-600">deep</span>
+          </h1>
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-4">
-              Kula<span className="text-blue-600">deep</span>
-            </h1>
+          <h2 className="mt-3 text-xl font-bold sm:text-2xl">
+            Full Stack Developer &amp; CS Student
+          </h2>
 
-            <h2 className="text-xl md:text-2xl font-bold mb-5">
-              Full Stack Developer & CS Student
-            </h2>
+          <p className="mt-4 leading-7 text-gray-400">
+            I build modern, responsive web applications that turn ideas
+            into real-world solutions. Passionate about full-stack
+            development, I enjoy creating intuitive user experiences and
+            exploring technologies like React, Node.js, and MongoDB.
+          </p>
 
-            <p className="text-gray-400 text-base md:text-lg leading-8 max-w-xl mx-auto md:mx-0 mb-7">
-              I build modern, responsive web applications that turn ideas
-              into real-world solutions. Passionate about full-stack
-              development, I enjoy creating intuitive user experiences
-              and exploring technologies like React, Node.js, and MongoDB.
-            </p>
+          {/* BUTTONS */}
+          <div className="mt-6 flex flex-wrap justify-center gap-4 md:justify-start">
 
-            {/* BUTTONS */}
-            <div className="flex flex-wrap justify-center md:justify-start gap-4">
+            <a
+              href="#projects"
+              className="flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 font-semibold transition hover:bg-blue-500"
+            >
+              <Send size={17} />
+              View My Work
+            </a>
 
-              <a
-                href="#projects"
-                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full font-semibold transition duration-300"
-              >
-                <Send size={17} />
-                View My Work
-              </a>
+            <a
+              href="#contact"
+              className="flex items-center gap-2 rounded-full border border-gray-500 px-6 py-3 font-semibold transition hover:border-blue-400 hover:text-blue-400"
+            >
+              <Mail size={17} />
+              Get In Touch
+            </a>
 
-              <a
-                href="#contact"
-                className="flex items-center gap-2 border border-gray-500 hover:border-blue-500 hover:text-blue-400 px-6 py-3 rounded-full font-semibold transition duration-300"
-              >
-                <Mail size={17} />
-                Get In Touch
-              </a>
-
-            </div>
           </div>
 
-          {/* RIGHT PROFILE IMAGE */}
-          <div className="relative flex justify-center items-center mt-10 md:mt-0">
+        </div>
 
-            {/* OUTER RING */}
-            <div className="absolute w-[300px] h-[300px] sm:w-[360px] sm:h-[360px] md:w-[400px] md:h-[400px] rounded-full border border-blue-500 animate-pulse"></div>
+        {/* RIGHT SIDE: PORTRAIT AND RINGS */}
+        <div className="relative flex h-[350px] w-full max-w-[350px] shrink-0 items-end justify-center sm:h-[420px] sm:max-w-[400px] md:h-[420px] md:max-w-[380px] lg:h-[500px] lg:max-w-[480px]">
 
-            {/* INNER RING */}
-            <div className="absolute w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] md:w-[380px] md:h-[380px] rounded-full border-2 border-purple-600"></div>
+          {/* OUTER BLUE RING */}
+          <div
+            className="absolute left-1/2 top-[45%] h-[75%] w-[75%] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-blue-500/80 shadow-[0_0_18px_rgba(59,130,246,0.2)]"
+            aria-hidden="true"
+          />
 
-            {/* PROFILE IMAGE */}
-            <img
-              src={`${baseUrl}images/myprofile.png`}
-              alt="Kuladeep profile portrait"
-              className="relative z-10 w-[280px] sm:w-[330px] md:w-[380px] h-[300px] sm:h-[350px] md:h-[400px] object-cover object-top rounded-b-full"
-              onError={(e) => {
-                console.error("Profile image could not be loaded:", e.currentTarget.src);
-              }}
-            />
+          {/* PURPLE RING */}
+          <div
+            className="absolute left-[49%] top-[45%] h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-purple-500/70"
+            aria-hidden="true"
+          />
 
-            {/* ANNOTATION */}
-            <div className="hidden md:block absolute top-10 right-0 text-blue-400 text-sm italic rotate-[-8deg]">
-              <p>Turning</p>
-              <p>ideas into</p>
-              <p>products</p>
-              <p className="text-lg mt-2">&lt;/&gt;</p>
-            </div>
+          {/* OFFSET BLUE RING */}
+          <div
+            className="absolute left-[51%] top-[47%] h-[78%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-400/40"
+            aria-hidden="true"
+          />
+
+          {/* PROFILE IMAGE */}
+          <img
+            src="/images/myprofile.png"
+            alt="Kuladeep profile portrait"
+            className="relative z-10 h-full w-full object-contain object-bottom"
+          />
+
+          {/* ANNOTATION */}
+          <div className="absolute -right-1 top-8 z-20 rotate-[-8deg] text-blue-400 sm:right-0 sm:top-10">
+
+            <p className="font-mono text-xs italic leading-5 sm:text-sm sm:leading-6">
+              Turning
+              <br />
+              ideas into
+              <br />
+              products
+              <br />
+              &lt;/&gt;
+            </p>
+
+            {/* CURVED ARROW */}
+            <svg
+              width="75"
+              height="65"
+              viewBox="0 0 75 65"
+              fill="none"
+              className="ml-[-8px] mt-1"
+              aria-hidden="true"
+            >
+              <path
+                d="M65 3 C64 28 48 42 13 53"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+
+              <path
+                d="M24 43 L13 53 L28 55"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
 
           </div>
 
@@ -90,6 +125,6 @@ const Hero = () => {
       </div>
     </section>
   );
-};
+}
 
 export default Hero;

@@ -5,13 +5,10 @@ import { useRef } from "react";
 function Projects() {
   const scrollRef = useRef(null);
 
-  // Automatically handles GitHub Pages and Vercel paths
-  const baseUrl = import.meta.env.BASE_URL;
-
   const projects = [
     {
       title: "AV Forensics",
-      image: `${baseUrl}images/av-forensics.png`,
+      image: "/images/av-forensics.png",
       description:
         "An audio and video forensics project focused on digital media analysis and examining multimedia content.",
       technologies: ["Python", "Digital Forensics"],
@@ -19,7 +16,7 @@ function Projects() {
     },
     {
       title: "Plant Pulse",
-      image: `${baseUrl}images/plant-pulse.png`,
+      image: "/images/plant-pulse.png",
       description:
         "A plant monitoring and management application designed to help users manage plant care and track plant-related information.",
       technologies: ["React", "JavaScript", "CSS"],
@@ -27,7 +24,7 @@ function Projects() {
     },
     {
       title: "Expense Tracker",
-      image: `${baseUrl}images/expense-tracker.png`,
+      image: "/images/expense-tracker.png",
       description:
         "A personal finance application that helps users record expenses, track spending and manage their budgets.",
       technologies: ["React", "JavaScript", "CSS"],
@@ -35,7 +32,7 @@ function Projects() {
     },
     {
       title: "Developer Portfolio",
-      image: `${baseUrl}images/portfolio.png`,
+      image: "/images/portfolio.png",
       description:
         "A personal developer portfolio showcasing my technical skills, projects and development journey.",
       technologies: ["React", "Tailwind CSS", "JavaScript"],
@@ -123,9 +120,6 @@ function Projects() {
                   alt={`${project.title} project preview`}
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                  onError={(e) => {
-                    console.error("Image failed to load:", project.image);
-                  }}
                 />
 
               </div>
