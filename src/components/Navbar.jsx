@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import {
   CloudDownload,
@@ -23,7 +24,7 @@ function Navbar() {
   ];
 
   return (
-    <header className="relative z-50 bg-[#0B1120] px-6 py-4 text-white md:px-10 lg:px-16">
+    <header className="fixed top-0 left-0 z-50 w-full bg-[#0B1120] px-6 py-4 text-white shadow-lg md:px-10 lg:px-16">
 
       <div className="mx-auto flex max-w-7xl items-center justify-between">
 
@@ -161,3 +162,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
