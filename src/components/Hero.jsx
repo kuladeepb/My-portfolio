@@ -4,9 +4,9 @@ function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen w-full overflow-hidden bg-[#0B1120] text-white"
+      className="min-h-screen scroll-mt-20 w-full overflow-hidden bg-[#0B1120] pt-20 text-white md:pt-0"
     >
-      <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center gap-12 px-6 py-16 md:flex-row md:justify-between md:gap-8 md:px-12 md:py-12 lg:gap-12 lg:px-16">
+      <div className="mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col items-center justify-center gap-12 px-6 py-12 md:min-h-screen md:flex-row md:justify-between md:gap-8 md:px-12 md:py-12 lg:gap-12 lg:px-16">
 
         {/* LEFT SIDE */}
         <div className="w-full max-w-[560px] text-center md:text-left">
